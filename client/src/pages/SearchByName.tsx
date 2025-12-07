@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import TreeNode from "../components/TreeNode";
 import { useSearchByNameQuery } from "../hooks/useSearchByNameQuery";
 
-const Search = () => {
+const SearchByName = () => {
 	const [inputValue, setInputValue] = useState("");
 	const [searchTerm, setSearchTerm] = useState("");
 
@@ -71,4 +71,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default SearchByName;

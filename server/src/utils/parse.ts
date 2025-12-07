@@ -7,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import xml2js from "xml2js";
+import { DataRow } from ".";
 
 /** Represents a single node in the XML structure */
 interface XmlNode {
@@ -25,12 +26,6 @@ interface XmlResult {
 interface TreeNode {
   words: string;
   children: TreeNode[];
-}
-
-/** Output format for each hierarchical entry */
-interface OutputEntry {
-  name: string;
-  size: number;
 }
 
 // Get current directory for ES modules
@@ -92,7 +87,7 @@ xml2js.parseString(
       return total;
     };
 
-    const output: OutputEntry[] = [];
+    const output: DataRow[] = [];
 
     /**
      * Traverses tree and creates flat list of entries with hierarchical paths

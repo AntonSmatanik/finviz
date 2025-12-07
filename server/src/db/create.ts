@@ -20,8 +20,6 @@ db.exec(`
     name TEXT UNIQUE NOT NULL,
     size INTEGER NOT NULL
   );
-  
-  CREATE INDEX IF NOT EXISTS idx_entries_name ON entries(name);
 `);
 
 console.log("Tables created successfully!");

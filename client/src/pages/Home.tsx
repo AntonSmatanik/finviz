@@ -3,6 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import ErrorMessage from "../components/ErrorMessage";
 import Headline from "../components/Headline";
 import Loader from "../components/Loader";
+import PageContainer from "../components/PageContainer";
 import TreeNode from "../components/TreeNode";
 import { useSearchByFullPathQuery } from "../hooks/useSearchByFullPathQuery";
 
@@ -20,7 +21,7 @@ const Home = () => {
 	};
 
 	return (
-		<div className="p-4 md:p-8 w-full max-w-6xl">
+		<PageContainer>
 			<Headline
 				title="Find element by path"
 				subtitle="Financial visualizations and stock analysis"
@@ -46,7 +47,7 @@ const Home = () => {
 					onChildClick={handleChildClick}
 				/>
 			)}
-		</div>
+		</PageContainer>
 	);
 };
 

@@ -1,13 +1,14 @@
 import ErrorMessage from "../components/ErrorMessage";
 import Headline from "../components/Headline";
 import Loader from "../components/Loader";
+import PageContainer from "../components/PageContainer";
 import { useTreeQuery } from "../hooks/useTreeQuery";
 
 const Tree = () => {
 	const { data, isLoading, error } = useTreeQuery();
 
 	return (
-		<div className="p-4 md:p-8 w-full max-w-6xl">
+		<PageContainer>
 			<Headline
 				title="Full Tree Structure"
 				subtitle="Complete ImageNet hierarchy in JSON format"
@@ -22,7 +23,7 @@ const Tree = () => {
 					<pre className="text-sm">{JSON.stringify(data, null, 2)}</pre>
 				</div>
 			)}
-		</div>
+		</PageContainer>
 	);
 };
 

@@ -1,10 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Contact from "./pages/Contact";
-import Home from "./pages/Home";
-import Search from "./pages/Search";
-import Tree from "./pages/Tree";
+import Loader from "./components/Loader";
+
+const Home = lazy(() => import("./pages/Home"));
+const SearchByName = lazy(() => import("./pages/SearchByName"));
+const Tree = lazy(() => import("./pages/Tree"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -23,12 +26,14 @@ const App = () => {
 				<div className="min-h-screen flex flex-col">
 					<Header />
 					<main className="flex-1 flex justify-center">
-						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/search" element={<Search />} />
-							<Route path="/tree" element={<Tree />} />
-							<Route path="/contact" element={<Contact />} />
-						</Routes>
+						<Suspense fallback={<Loader />}>
+							<Routes>
+								<Route path="/" element={<Home />} />
+								<Route path="/search" element={<SearchByName />} />
+								<Route path="/tree" element={<Tree />} />
+								<Route path="/contact" element={<Contact />} />
+							</Routes>
+						</Suspense>
 					</main>
 				</div>
 			</Router>

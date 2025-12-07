@@ -2,6 +2,7 @@ import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { DataRow } from "../utils";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,5 +22,5 @@ export const readEntriesTable = () => {
 
   db.close();
 
-  return rows as Array<{ name: string; size: number }>;
+  return rows as Array<DataRow>;
 };

@@ -7,7 +7,7 @@ export const useSearchByNameQuery = (name: string) => {
 		queryFn: async () => {
 			const response = await fetch(
 				`http://localhost:${SERVER_PORT}/search-by-name?val=${encodeURIComponent(
-					name,
+					name.trim(),
 				)}`,
 			);
 			if (!response.ok) {
