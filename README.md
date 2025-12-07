@@ -4,13 +4,13 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
 
 ## Features
 
-- **Path-based Search**: Navigate through the hierarchy using full paths for O(1) lookup performance
-- **Name-based Search**: Search for nodes by name with O(n) search capability
+- **Search by Full Path**: Navigate through the hierarchy using full paths for O(1) lookup performance
+- **Search by Name**: Search for nodes by name with O(n) search capability
 - **Tree Visualization**: View the complete hierarchy structure in JSON format
-- **Breadcrumb Navigation**: Easy navigation through the hierarchy with clickable breadcrumbs
-- **Responsive Design**: Mobile-friendly interface with hamburger menu
-- **Real-time Search**: Debounced search with 1-second delay for optimal performance
-- **Contact Page**: Developer information and skills showcase
+- **Breadcrumb Navigation**: Easy navigation through the hierarchy with clickable breadcrumbs and visual separators
+- **Responsive Design**: Mobile-friendly interface with full-screen overlay menu
+- **Visual Tree Structure**: Color-coded tree lines and connectors for better hierarchy visualization
+- **Lazy Loading**: Code-split pages for optimal initial load performance
 
 ## Tech Stack
 
@@ -26,19 +26,18 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
 
 ### Backend
 
-- **Node.js** - Runtime environment
+- **Node.js** - Runtime environment with ES modules
 - **Express** - Web server framework
-- **TypeScript** - Type safety
-- **Better-SQLite3** - Database
-- **TSX** - TypeScript execution
-- **xml2js** - XML parsing
+- **TypeScript** - Type safety (ES2022 target)
+- **Better-SQLite3** - Embedded SQLite database
+- **xml2js** - XML parsing for data import
 - **CORS** - Cross-origin resource sharing
 
 ## Installation
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js
 - npm or yarn
 
 ### Setup Instructions
@@ -50,25 +49,17 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
    cd Finviz
    ```
 
-2. **Parse the XML data** (First time only)
-
-   ```bash
-   cd calc
-   npm install
-   npm run parse
-   # This converts structure_released.xml to JSON
-   ```
-
-3. **Setup the server**
+2. **Setup the server**
 
    ```bash
    cd ../server
    npm install
+   npm run parse:file # Parse XML file to JSON
    npm run db:create  # Create SQLite database
    npm run db:seed    # Populate database with data
    ```
 
-4. **Setup the client**
+3. **Setup the client**
    ```bash
    cd ../client
    npm install
@@ -98,21 +89,6 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
 
 3. Open your browser and navigate to `http://localhost:5173`
 
-### Production Build
-
-1. **Build the client**
-
-   ```bash
-   cd client
-   npm run build
-   ```
-
-2. **Build the server**
-   ```bash
-   cd server
-   npm run build
-   ```
-
 ## API Endpoints
 
 The server exposes three REST endpoints:
@@ -127,7 +103,7 @@ Returns the complete tree structure.
 
 ---
 
-### GET /search-by-fullPath?val={fullPath}
+### GET /search-by-fullpath?val={fullPath}
 
 Search for a node by its full hierarchical path.
 
@@ -175,6 +151,14 @@ Search for a node by its name.
 
 ### Lazy Loading Strategy
 
+**Component-level (Code Splitting)**
+
+- All pages are lazy loaded using React.lazy()
+- Each route is a separate chunk loaded on navigation
+- Suspense boundary with Loader fallback for smooth UX
+
+**Data-level**
+
 - Only direct children are loaded initially
 - Clicking on a node fetches its children on demand
 - Reduces initial payload and improves performance
@@ -199,6 +183,16 @@ Search for a node by its name.
 - Useful when exact path is unknown
 - Returns first matching node
 
+### Component Architecture
+
+**Reusable Components**
+
+- `PageContainer` - Consistent page layout wrapper
+- `Breadcrumb` - Navigation with chevron separators
+- `TreeNode` - Display node with children list
+- `Header` - Responsive navigation with mobile overlay
+- SVG icons exported to `/assets` for reusability
+
 ### Database Design
 
 **Schema:**
@@ -210,9 +204,6 @@ CREATE TABLE entries (
   size INTEGER NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE INDEX idx_path ON entries(path);
-CREATE INDEX idx_size ON entries(size);
 ```
 
 **Why SQLite?**
@@ -226,20 +217,20 @@ CREATE INDEX idx_size ON entries(size);
 
 ### Client Scripts
 
-- `npm run dev` - Start development server (runs lint:fix first)
-- `npm run build` - Build for production
-- `npm run lint` - Check code for issues
-- `npm run lint:fix` - Auto-fix linting issues
-- `npm run preview` - Preview production build
+- `npm run dev` - Start development server with Vite (runs lint:fix first)
+- `npm run build` - TypeScript compilation + Vite production build
+- `npm run lint` - Check code with Biome
+- `npm run lint:fix` - Auto-fix linting issues with Biome
+- `npm run preview` - Preview production build locally
 
 ### Server Scripts
 
 - `npm run dev` - Start development server with hot reload
 - `npm run start` - Start production server
+- `npm run parse:file` - Parse XML file to JSON
 - `npm run db:create` - Create database schema
 - `npm run db:seed` - Populate database with data
-- `npm run parse` - Parse XML to JSON (in calc folder)
 
 ## License
 
-This project is private and proprietary.
+Free for personal and educational use.
