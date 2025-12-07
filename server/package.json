@@ -1,0 +1,31 @@
+{
+  "name": "finviz-server",
+  "version": "1.0.0",
+  "description": "Backend server for Finviz ImageNet hierarchy viewer",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "db:create": "tsx src/db/create.ts",
+    "db:seed": "tsx src/db/seed.ts",
+    "parse": "tsx src/utils/parse.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "@types/xml2js": "^0.4.14",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
