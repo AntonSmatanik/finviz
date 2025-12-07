@@ -201,8 +201,7 @@ Search for a node by its name.
 CREATE TABLE entries (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   path TEXT UNIQUE NOT NULL,
-  size INTEGER NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  size INTEGER NOT NULL
 );
 ```
 
