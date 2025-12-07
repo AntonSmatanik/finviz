@@ -11,36 +11,36 @@ const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5,
-      retry: 1,
-      refetchOnWindowFocus: false,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			staleTime: 1000 * 60 * 5,
+			retry: 1,
+			refetchOnWindowFocus: false,
+		},
+	},
 });
 
 const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1 flex justify-center">
-            <Suspense fallback={<Loader />}>
-              <Routes>
-                <Route path="/" element={<SearchByFullPath />} />
-                <Route path="/search-by-name" element={<SearchByName />} />
-                <Route path="/tree" element={<Tree />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </main>
-        </div>
-      </Router>
-    </QueryClientProvider>
-  );
+	return (
+		<QueryClientProvider client={queryClient}>
+			<Router>
+				<div className="min-h-screen flex flex-col">
+					<Header />
+					<main className="flex-1 flex justify-center">
+						<Suspense fallback={<Loader />}>
+							<Routes>
+								<Route path="/" element={<SearchByFullPath />} />
+								<Route path="/search-by-name" element={<SearchByName />} />
+								<Route path="/tree" element={<Tree />} />
+								<Route path="/contact" element={<Contact />} />
+								<Route path="*" element={<NotFound />} />
+							</Routes>
+						</Suspense>
+					</main>
+				</div>
+			</Router>
+		</QueryClientProvider>
+	);
 };
 
 export default App;

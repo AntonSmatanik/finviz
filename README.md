@@ -164,11 +164,20 @@ Search for a node by its name.
 - Clicking on a node fetches its children on demand
 - Reduces initial payload and improves performance
 
-### Server-Side Caching
+### Caching Strategy
+
+**Server-Side Caching**
 
 - Tree structure is built once on server startup
 - Node map is cached in memory for fast lookups
 - Eliminates database queries for repeated requests
+
+**Client-Side Caching (TanStack Query)**
+
+- 5-minute stale time for all queries
+- Automatic background refetching disabled
+- Query results cached by unique keys (path or name)
+- Reduces unnecessary API calls and improves perceived performance
 
 ### Two Search Modes
 
@@ -193,6 +202,17 @@ Search for a node by its name.
 - `TreeNode` - Display node with children list
 - `Header` - Responsive navigation with mobile overlay
 - SVG icons exported to `/assets` for reusability
+
+### Data Processing
+
+**Duplicate Path Handling**
+
+Source file contains duplicate node names in different hierarchy branches (e.g., "bladderpod" appears multiple times). The parser handles this by:
+
+- Detecting duplicate paths during XML traversal
+- Merging sizes of all occurrences of the same path
+- Outputting only unique paths with combined descendant counts
+- Result: ~60,718 unique entries from ~60,942 total XML nodes
 
 ### Database Design
 

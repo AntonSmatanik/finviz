@@ -75,11 +75,12 @@ xml2js.parseString(
       return total;
     };
 
-    const output: DataRow[] = [];
+    const pathMap = new Map<string, number>();
 
     /**
      * Traverses tree and creates flat list of entries with hierarchical paths
      * Each entry includes full path and total descendant count
+     * Merges sizes for duplicate paths
      * @param node - Current node to process
      * @param path - Accumulated path from root to current node
      */
@@ -87,7 +88,9 @@ xml2js.parseString(
       const current = path ? `${path} > ${node.words}` : node.words;
       const size = countDesc(node);
 
-      output.push({ name: current, size });
+      // Merge sizes for duplicate paths
+      const existingSize = pathMap.get(current) || 0;
+      pathMap.set(current, existingSize + size);
 
       for (const c of node.children) {
         traverse(c, current);
@@ -96,6 +99,11 @@ xml2js.parseString(
 
     // Start traversal from root with empty path
     traverse(tree, "");
+
+    // Convert map to array
+    const output: DataRow[] = Array.from(pathMap.entries()).map(
+      ([name, size]) => ({ name, size })
+    );
 
     console.log(`Total entries: ${output.length}`);
 

@@ -21,9 +21,7 @@ const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
 
 console.log(`Loading ${data.length} entries...`);
 
-const insert = db.prepare(
-  "INSERT OR REPLACE INTO entries (name, size) VALUES (?, ?)"
-);
+const insert = db.prepare("INSERT INTO entries (name, size) VALUES (?, ?)");
 
 const insertMany = db.transaction((entries: DataRow[]) => {
   for (const entry of entries) {
