@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { SERVER_PORT } from "../config";
 
-export const useSearchByFullPathQuery = (fullPath: string) => {
+export const useSearchByFullPathQuery = (fullpath: string) => {
 	return useQuery({
-		queryKey: ["node-by-fullPath", fullPath],
+		queryKey: ["node-by-fullpath", fullpath],
 		queryFn: async () => {
 			const response = await fetch(
-				`http://localhost:${SERVER_PORT}/search-by-fullPath?val=${encodeURIComponent(
-					fullPath,
+				`http://localhost:${SERVER_PORT}/search-by-fullpath?val=${encodeURIComponent(
+					fullpath,
 				)}`,
 			);
 			if (!response.ok) {

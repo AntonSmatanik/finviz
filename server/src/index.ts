@@ -28,7 +28,7 @@ app.get("/tree", (req: Request, res: Response) => {
   res.status(200).json(cachedTree);
 });
 
-app.get("/search-by-fullPath", async (req: Request, res: Response) => {
+app.get("/search-by-fullpath", async (req: Request, res: Response) => {
   const val = req.query?.val as string;
 
   if (cachedNodeMap === null) {

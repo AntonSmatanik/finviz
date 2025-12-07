@@ -7,7 +7,7 @@ import PageContainer from "../components/PageContainer";
 import TreeNode from "../components/TreeNode";
 import { useSearchByFullPathQuery } from "../hooks/useSearchByFullPathQuery";
 
-const Home = () => {
+const SearchByFullPath = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 
 	const { data, isLoading, error } = useSearchByFullPathQuery(searchTerm);
@@ -42,7 +42,6 @@ const Home = () => {
 				<TreeNode
 					name={data.name}
 					size={data.size}
-					fullPath={data.fullPath}
 					children={data.children}
 					onChildClick={handleChildClick}
 				/>
@@ -51,4 +50,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default SearchByFullPath;

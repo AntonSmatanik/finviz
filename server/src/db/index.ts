@@ -1,13 +1,8 @@
 import Database from "better-sqlite3";
+
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { dbPath } from "../config";
 import { DataRow } from "../utils";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export const dbPath = path.join(__dirname, "../../finviz.db");
 
 export const readEntriesTable = () => {
   if (!fs.existsSync(dbPath)) {
@@ -17,9 +12,7 @@ export const readEntriesTable = () => {
   }
 
   const db = new Database(dbPath, { readonly: true });
-
   const rows = db.prepare("SELECT name, size FROM entries").all();
-
   db.close();
 
   return rows as Array<DataRow>;

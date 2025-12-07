@@ -3,6 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import ErrorMessage from "../components/ErrorMessage";
 import Headline from "../components/Headline";
 import Loader from "../components/Loader";
+import PageContainer from "../components/PageContainer";
 import TreeNode from "../components/TreeNode";
 import { useSearchByNameQuery } from "../hooks/useSearchByNameQuery";
 
@@ -31,7 +32,7 @@ const SearchByName = () => {
 	};
 
 	return (
-		<div className="p-4 md:p-8 w-full max-w-6xl">
+		<PageContainer>
 			<Headline
 				title="Find element by name"
 				subtitle="Financial visualizations and stock analysis"
@@ -45,7 +46,7 @@ const SearchByName = () => {
 				className="w-full px-4 py-2 mb-4 rounded-lg border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
 			/>
 
-			{data && !isLoading && !error && data.fullPath && (
+			{data && !isLoading && !error && (
 				<Breadcrumb
 					path={data.fullPath}
 					onNavigate={handleBreadcrumbNavigate}
@@ -61,13 +62,12 @@ const SearchByName = () => {
 				<TreeNode
 					name={data.name}
 					size={data.size}
-					fullPath={data.fullPath}
 					children={data.children}
 					onChildClick={handleChildClick}
 					searchMode={true}
 				/>
 			)}
-		</div>
+		</PageContainer>
 	);
 };
 

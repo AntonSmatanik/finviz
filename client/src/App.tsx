@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
 
-const Home = lazy(() => import("./pages/Home"));
+const SearchByFullPath = lazy(() => import("./pages/SearchByFullPath"));
 const SearchByName = lazy(() => import("./pages/SearchByName"));
 const Tree = lazy(() => import("./pages/Tree"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -28,8 +28,8 @@ const App = () => {
 					<main className="flex-1 flex justify-center">
 						<Suspense fallback={<Loader />}>
 							<Routes>
-								<Route path="/" element={<Home />} />
-								<Route path="/search" element={<SearchByName />} />
+								<Route path="/" element={<SearchByFullPath />} />
+								<Route path="/search-by-name" element={<SearchByName />} />
 								<Route path="/tree" element={<Tree />} />
 								<Route path="/contact" element={<Contact />} />
 							</Routes>

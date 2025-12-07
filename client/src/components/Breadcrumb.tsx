@@ -1,3 +1,5 @@
+import ChevronRight from "../assets/ChevronRight";
+
 type BreadcrumbProps = {
 	path: string;
 	onNavigate: (fullPath: string) => void;
@@ -21,7 +23,7 @@ const Breadcrumb = ({ path, onNavigate, searchMode }: BreadcrumbProps) => {
 
 	return (
 		<nav className="mb-4">
-			<div className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gradient-to-r from-gray-800 to-gray-750 text-white shadow-md">
+			<div className="w-full p-3 rounded-lg border border-gray-700 text-white shadow-md">
 				<ol className="list-none p-0 inline-flex flex-wrap items-center gap-1">
 					{segments.map((segment, index) => (
 						<li key={index} className="flex items-center">
@@ -36,21 +38,7 @@ const Breadcrumb = ({ path, onNavigate, searchMode }: BreadcrumbProps) => {
 							>
 								{segment}
 							</button>
-							{index < segments.length - 1 && (
-								<svg
-									className="w-4 h-4 mx-1 text-gray-500"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M9 5l7 7-7 7"
-									/>
-								</svg>
-							)}
+							{index < segments.length - 1 && <ChevronRight />}
 						</li>
 					))}
 				</ol>

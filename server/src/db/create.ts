@@ -1,6 +1,6 @@
 import Database from "better-sqlite3";
 import fs from "fs";
-import { dbPath } from "./index";
+import { dbPath } from "../config";
 
 if (fs.existsSync(dbPath)) {
   console.log("Database already exists");

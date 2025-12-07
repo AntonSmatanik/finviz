@@ -1,14 +1,7 @@
 import Database from "better-sqlite3";
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dbPath } from ".";
+import { dbPath, jsonPath } from "../config";
 import { DataRow } from "../utils";
-
-// Get current directory for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const jsonPath = path.join(__dirname, "../data/structure_released.json");
 
 if (!fs.existsSync(dbPath)) {
   console.error("Database not found. Run 'npm run db:create' first.");

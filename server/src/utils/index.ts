@@ -95,11 +95,14 @@ export const getNodeByPath = (
 ): TreeNode | null => {
   if (!fullPath || fullPath.trim() === "") {
     const root = findRootNode(nodeMap);
+
     if (!root) return null;
+
     return flattenNodeChildren(root);
   }
 
   const node = nodeMap.get(fullPath);
+
   if (!node) return null;
 
   return flattenNodeChildren(node);
@@ -118,13 +121,16 @@ export const getNodeByName = (
 ): TreeNode | null => {
   if (!name || name.trim() === "") {
     const root = findRootNode(nodeMap);
+
     if (!root) return null;
+
     return flattenNodeChildren(root);
   }
 
   const node = Array.from(nodeMap.values()).find(
     (n) => n.name.toLowerCase() === name.toLowerCase()
   );
+
   if (!node) return null;
 
   return flattenNodeChildren(node);

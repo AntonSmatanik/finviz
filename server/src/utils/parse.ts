@@ -1,13 +1,7 @@
-/**
- * XML Parser for ImageNet Structure
- * Converts ImageNet hierarchy XML to flat JSON entries with hierarchical paths
- */
-
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import xml2js from "xml2js";
 import { DataRow } from ".";
+import { FILE_NAME } from "../config";
 
 /** Represents a single node in the XML structure */
 interface XmlNode {
@@ -27,12 +21,6 @@ interface TreeNode {
   words: string;
   children: TreeNode[];
 }
-
-// Get current directory for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const FILE_NAME = path.join(__dirname, "../data/structure_released");
 
 // Read the XML file
 const inputFile = fs.readFileSync(`${FILE_NAME}.xml`, "utf8");

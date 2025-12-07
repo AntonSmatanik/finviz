@@ -1,15 +1,19 @@
-type TreeNodeProps = {
+type TreeNodeChild = {
 	name: string;
 	fullPath: string;
 	size: number;
-	children?: Array<{ name: string; fullPath: string; size: number }>;
+};
+
+type TreeNodeProps = {
+	name: string;
+	size: number;
+	children?: TreeNodeChild[];
 	onChildClick: (identifier: string) => void;
 	searchMode?: boolean;
 };
 
 const TreeNode = ({
 	name,
-	fullPath: _fullPath,
 	size,
 	children,
 	onChildClick,

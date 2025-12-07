@@ -1,17 +1,14 @@
 {
   "name": "finviz-server",
   "version": "1.0.0",
-  "description": "Backend server for Finviz ImageNet hierarchy viewer",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
+    "parse:file": "tsx src/utils/parse.ts",
     "db:create": "tsx src/db/create.ts",
-    "db:seed": "tsx src/db/seed.ts",
-    "parse": "tsx src/utils/parse.ts"
+    "db:seed": "tsx src/db/seed.ts"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^11.7.0",
