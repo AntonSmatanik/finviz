@@ -14,6 +14,6 @@ export const useSearchByNameQuery = (name: string) => {
         throw new Error("Failed to fetch node");
       }
       return response.json();
-    }
+    },
   });
 };

@@ -10,6 +10,6 @@ export const useTreeQuery = () => {
         throw new Error("Failed to fetch tree");
       }
       return response.json();
-    }
+    },
   });
 };

@@ -14,6 +14,6 @@ export const useSearchByFullPathQuery = (fullpath: string) => {
         throw new Error("Failed to fetch node");
       }
       return response.json();
-    }
+    },
   });
 };
