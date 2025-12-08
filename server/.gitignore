@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 finviz.db
-src/data/structure_released.json
+src/data
 
 # Editor directories and files
 .vscode/*

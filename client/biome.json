@@ -26,9 +26,7 @@
       },
       "a11y": {
         "useKeyWithClickEvents": "off",
-        "noNoninteractiveElementToInteractiveRole": "off",
-        "noStaticElementInteractions": "off",
-        "noSvgWithoutTitle": "off"
+        "noStaticElementInteractions": "off"
       },
       "style": {
         "noNonNullAssertion": "off"
