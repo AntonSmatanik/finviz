@@ -1,6 +1,6 @@
 import Database from "better-sqlite3";
-
 import fs from "fs";
+
 import { dbPath } from "../config";
 import { DataRow } from "../utils";
 
