@@ -12,6 +12,7 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
 - **Visual Tree Structure**: Color-coded tree lines and connectors for better hierarchy visualization
 - **Lazy Loading**: Code-split pages for optimal initial load performance
 - **Server-Side Caching**: In-memory caching for fast data retrieval
+- **Client-Side Caching**: Efficient data caching with TanStack Query
 
 ## Tech Stack
 
