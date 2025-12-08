@@ -11,7 +11,7 @@ const Header = () => {
     { path: "/", label: "Search by Full Path" },
     { path: "/search-by-name", label: "Search by Name" },
     { path: "/tree", label: "Tree" },
-    { path: "/contact", label: "Contact" }
+    { path: "/contact", label: "Contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;

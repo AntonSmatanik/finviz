@@ -20,7 +20,7 @@ const Contact = () => {
     "Kubernetes",
     "Jenkins",
     "AWS",
-    "Azure"
+    "Azure",
   ];
 
   return (
