@@ -7,13 +7,13 @@ export const useSearchByFullPathQuery = (fullpath: string) => {
     queryFn: async () => {
       const response = await fetch(
         `http://localhost:${SERVER_PORT}/search-by-fullpath?val=${encodeURIComponent(
-          fullpath,
-        )}`,
+          fullpath
+        )}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch node");
       }
       return response.json();
-    },
+    }
   });
 };
