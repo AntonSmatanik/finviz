@@ -51,7 +51,11 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
    cd Finviz
    ```
 
-2. **Setup the server**
+2. **Copy the XML data file**
+
+   Place the `structure_released.xml` file in the `server/src/data/` directory.
+
+3. **Setup the server**
 
    ```bash
    cd ../server
@@ -61,7 +65,7 @@ A full-stack web application for browsing and exploring the ImageNet hierarchy s
    npm run db:seed    # Populate database with data
    ```
 
-3. **Setup the client**
+4. **Setup the client**
    ```bash
    cd ../client
    npm install
